@@ -1,0 +1,40 @@
+﻿@using UserManagement.ViewModels
+@model IEnumerable<IdentityRole> 
+
+
+
+<h3>Roles</h3>
+
+<partial name="_form" model="new RoleFormViewModel()" />
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Role Name</th>
+            <th>Option</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+            @foreach(var role in Model)
+            {<tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Edit" asp-route-Id="@role.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-Id="@role.Id">Delete</a>
+                </td>
+            </tr>
+                
+            }
+            
+        
+        
+    </tbody>
+</table>
+
+@section scripts{
+    <partial name="_ValidationScriptspartial" />
+}
